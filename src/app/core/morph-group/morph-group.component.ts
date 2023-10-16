@@ -48,7 +48,7 @@ export class MorphGroupComponent {
     this.status = 'pending';
 
     timer(4000).subscribe(() => {
-      this.morph.emit(MOCK);
+      this.morph.emit([...MOCK]);
       this.status = 'morphed';
     });
   }

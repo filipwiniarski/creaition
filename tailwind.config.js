@@ -31,12 +31,10 @@ module.exports = {
       keyframes: {
         morph: {
           "0%": {
-            borderRadius: "100%",
             width: 0,
             opacity: 0,
           },
           "100%": {
-            borderRadius: "0%",
             width: 180,
             opacity: 1,
           },
