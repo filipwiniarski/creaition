@@ -19,7 +19,7 @@
       <line x1="0" y1="0" x2="0" y2="50" />
     </svg>
   </div>
-  <button class="border duration-300 rounded-md {{status !== 'pristine' ? 'bg-black h-10 px-6 text-white border-black' : 'h-10 px-6 hover:bg-gray-100 active:bg-gray-200 border-zinc-300'}}" (click)="startMorph()">
+  <button class="border duration-300 rounded-md {{status !== 'pristine' ? 'bg-black h-10 px-6 text-white border-black' : 'h-10 px-6 hover:bg-gray-100 active:bg-gray-200 border-zinc-300'}}" (click)="startMorph()" [disabled]="status !== 'pristine'">
     <icon-check-badge *ngIf="status === 'morphed'"/>
     <span *ngIf="status !== 'morphed'">{{actionLabel}}</span>
   </button>
