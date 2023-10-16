@@ -6,11 +6,14 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
+import { emptyArrayOfLength } from '../../core/helpers/empty-array-of-length';
+import { aiPure } from '../../core/decorators/pure';
+
+type ConnectorsDirection = 'up' | 'down';
 
 @Component({
   selector: 'app-connectors',
   templateUrl: './connectors.component.html',
-  styleUrls: ['./connectors.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'block',
@@ -21,19 +24,23 @@ export class ConnectorsComponent implements OnChanges {
   length = 0;
 
   @Input()
-  direction: 'up' | 'down' = 'down';
+  direction: ConnectorsDirection = 'down';
 
   items: number[] = [];
 
   @HostBinding('class.-scale-y-100')
+  @aiPure
   private get rotate(): boolean {
     return this.direction === 'up';
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['length']) {
-      const length = changes['length'].currentValue || 0;
-      this.items = new Array(length).fill(undefined).map((_, i) => i);
+      this.setItems();
     }
+  }
+
+  setItems(): void {
+    this.items = emptyArrayOfLength(this.length || 0);
   }
 }

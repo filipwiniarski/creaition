@@ -1,8 +1,11 @@
 <div class="overflow-x-auto px-8" [class.pt-2]="index === 0">
-  <ng-container *ngIf="index">
-    <app-connectors [length]="images.length" direction="up"></app-connectors>
-  </ng-container>
-  <div class="relative flex justify-center mx-auto w-min" #m1>
+  <app-connectors
+    *ngIf="index"
+    [length]="images.length"
+    direction="up"
+  ></app-connectors>
+
+  <div class="relative flex justify-center mx-auto w-min">
     <app-input-image
       *ngFor="let image of images"
       [imageSrc]="image"
@@ -25,17 +28,8 @@
   <app-connectors [length]="images.length"></app-connectors>
 </div>
 <div class="text-center" *ngIf="images.length > 1">
-  <div class="flex justify-center mx-auto w-min">
-    <svg
-      viewBox="0 0 2 50"
-      width="200"
-      height="50"
-      class="stroke-zinc-300"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <line x1="0" y1="0" x2="0" y2="50" />
-    </svg>
-  </div>
+  <app-connector-vertical></app-connector-vertical>
+
   <button
     class="border duration-300 rounded-md {{
       status !== 'pristine'
@@ -46,17 +40,8 @@
     [disabled]="status !== 'pristine'"
   >
     <icon-check-badge *ngIf="status === 'morphed'" />
-    <span *ngIf="status !== 'morphed'">{{ actionLabel }}</span>
+    <span *ngIf="status !== 'morphed'">{{ status | morphActionLabel }}</span>
   </button>
-  <div class="flex justify-center mx-auto w-min" *ngIf="status === 'morphed'">
-    <svg
-      viewBox="0 0 2 50"
-      width="200"
-      height="50"
-      class="stroke-zinc-300"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <line x1="0" y1="0" x2="0" y2="50" />
-    </svg>
-  </div>
+
+  <app-connector-vertical *ngIf="status === 'morphed'"></app-connector-vertical>
 </div>
