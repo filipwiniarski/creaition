@@ -1,12 +1,22 @@
 <div class="justify-between p-8">
   <div>
-    <img ngSrc="/assets/img/creaition_logo.svg" alt="cre[ai]tion" height="128" width="128"/>
+    <img
+      ngSrc="/assets/img/creaition_logo.svg"
+      alt="cre[ai]tion"
+      height="128"
+      width="128"
+    />
   </div>
 </div>
 
 <div class="flex items-center justify-center w-full">
   <div class="grid my-20 w-full">
     <h1 class="text-5xl mb-12 p-8">morph inspirations</h1>
-    <app-morph-group [index]="i" (morph)="onMorph($event)" *ngFor="let morph of morphs; let i = index" [images]="morph"></app-morph-group>
+    <app-morph-group
+      [index]="i"
+      (morph)="onMorph($event)"
+      *ngFor="let morph of morphs; let i = index"
+      [images]="morph"
+    ></app-morph-group>
   </div>
 </div>

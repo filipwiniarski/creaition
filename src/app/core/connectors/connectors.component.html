@@ -1,9 +1,15 @@
 <div class="flex justify-center mx-auto w-min" *ngIf="length > 1">
-  <div class="flex justify-center" *ngFor="let i of items;">
-    <svg viewBox="0 0 200 50" width="200" height="50" class="stroke-zinc-300"  xmlns="http://www.w3.org/2000/svg">
-      <line x1="0" y1="49.5" x2="99.5" y2="49.5" *ngIf="i > 0"/>
-      <line x1="99.5" y1="49.5" x2="200" y2="49.5" *ngIf="i < (length - 1)"/>
-      <line x1="99" y1="0" x2="99" y2="70"/>
+  <div class="flex justify-center" *ngFor="let i of items">
+    <svg
+      viewBox="0 0 200 50"
+      width="200"
+      height="50"
+      class="stroke-zinc-300"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line x1="0" y1="49.5" x2="99.5" y2="49.5" *ngIf="i > 0" />
+      <line x1="99.5" y1="49.5" x2="200" y2="49.5" *ngIf="i < length - 1" />
+      <line x1="99" y1="0" x2="99" y2="70" />
     </svg>
   </div>
 </div>

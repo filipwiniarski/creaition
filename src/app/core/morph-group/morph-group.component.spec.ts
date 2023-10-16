@@ -8,7 +8,7 @@ describe('MorphGroupComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MorphGroupComponent]
+      declarations: [MorphGroupComponent],
     });
     fixture = TestBed.createComponent(MorphGroupComponent);
     component = fixture.componentInstance;

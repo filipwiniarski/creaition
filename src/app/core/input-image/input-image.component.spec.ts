@@ -8,7 +8,7 @@ describe('InputImageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [InputImageComponent]
+      declarations: [InputImageComponent],
     });
     fixture = TestBed.createComponent(InputImageComponent);
     component = fixture.componentInstance;

@@ -3,28 +3,59 @@
     <app-connectors [length]="images.length" direction="up"></app-connectors>
   </ng-container>
   <div class="relative flex justify-center mx-auto w-min" #m1>
-    <app-input-image *ngFor="let image of images" [imageSrc]="image"></app-input-image>
-    <div class="duration-300 absolute h-[180px] flex items-center {{images.length > 0 ? 'w-[80px] left-full translate-x-4' : 'w-[200px]'}}" *ngIf="status === 'pristine'">
-      <button class="text-4xl duration-300 w-full h-full flex justify-center items-center z-10 border border-zinc-300 border-dashed rounded-md hover:bg-gray-200 active:bg-gray-300" (click)="input.click()">
+    <app-input-image
+      *ngFor="let image of images"
+      [imageSrc]="image"
+    ></app-input-image>
+    <div
+      class="duration-300 absolute h-[180px] flex items-center {{
+        images.length > 0 ? 'w-[80px] left-full translate-x-4' : 'w-[200px]'
+      }}"
+      *ngIf="status === 'pristine'"
+    >
+      <button
+        class="text-4xl duration-300 w-full h-full flex justify-center items-center z-10 border border-zinc-300 border-dashed rounded-md hover:bg-gray-200 active:bg-gray-300"
+        (click)="input.click()"
+      >
         +
       </button>
-      <input type="file" class="hidden" #input (change)="loadImage($event)"/>
+      <input type="file" class="hidden" #input (change)="loadImage($event)" />
     </div>
   </div>
   <app-connectors [length]="images.length"></app-connectors>
 </div>
 <div class="text-center" *ngIf="images.length > 1">
   <div class="flex justify-center mx-auto w-min">
-    <svg viewBox="0 0 2 50" width="200" height="50" class="stroke-zinc-300"  xmlns="http://www.w3.org/2000/svg">
+    <svg
+      viewBox="0 0 2 50"
+      width="200"
+      height="50"
+      class="stroke-zinc-300"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <line x1="0" y1="0" x2="0" y2="50" />
     </svg>
   </div>
-  <button class="border duration-300 rounded-md {{status !== 'pristine' ? 'bg-black h-10 px-6 text-white border-black' : 'h-10 px-6 hover:bg-gray-100 active:bg-gray-200 border-zinc-300'}}" (click)="startMorph()" [disabled]="status !== 'pristine'">
-    <icon-check-badge *ngIf="status === 'morphed'"/>
-    <span *ngIf="status !== 'morphed'">{{actionLabel}}</span>
+  <button
+    class="border duration-300 rounded-md {{
+      status !== 'pristine'
+        ? 'bg-black h-10 px-6 text-white border-black'
+        : 'h-10 px-6 hover:bg-gray-100 active:bg-gray-200 border-zinc-300'
+    }}"
+    (click)="startMorph()"
+    [disabled]="status !== 'pristine'"
+  >
+    <icon-check-badge *ngIf="status === 'morphed'" />
+    <span *ngIf="status !== 'morphed'">{{ actionLabel }}</span>
   </button>
   <div class="flex justify-center mx-auto w-min" *ngIf="status === 'morphed'">
-    <svg viewBox="0 0 2 50" width="200" height="50" class="stroke-zinc-300"  xmlns="http://www.w3.org/2000/svg">
+    <svg
+      viewBox="0 0 2 50"
+      width="200"
+      height="50"
+      class="stroke-zinc-300"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <line x1="0" y1="0" x2="0" y2="50" />
     </svg>
   </div>
