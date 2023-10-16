@@ -41,6 +41,7 @@ export class MorphGroupComponent {
     timer(4000).subscribe(() => {
       this.morph.emit([...MOCK]);
       this.status = 'morphed';
+      this.changeDetectorRef.detectChanges();
     });
   }
 
