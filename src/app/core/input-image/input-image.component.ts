@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostBinding,
-  Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-input-image',
@@ -17,11 +12,4 @@ import {
 export class InputImageComponent {
   @Input()
   imageSrc: string | undefined;
-
-  @HostBinding('style.filter')
-  hue;
-
-  constructor() {
-    this.hue = `hue-rotate(${360 * Math.random()}deg)`;
-  }
 }
