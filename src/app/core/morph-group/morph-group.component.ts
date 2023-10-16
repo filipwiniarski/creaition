@@ -17,6 +17,9 @@ type Status = 'pristine' | 'pending' | 'morphed';
   templateUrl: './morph-group.component.html',
   styleUrls: ['./morph-group.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'block',
+  },
 })
 export class MorphGroupComponent {
   @Input()
