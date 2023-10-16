@@ -10,6 +10,8 @@ import { timer } from 'rxjs';
 
 const MOCK = ['/assets/img/o1.png', '/assets/img/o2.png', '/assets/img/o3.png'];
 
+type Status = 'pristine' | 'pending' | 'morphed';
+
 @Component({
   selector: 'app-morph-group',
   templateUrl: './morph-group.component.html',
@@ -23,18 +25,31 @@ export class MorphGroupComponent {
   @Output()
   morph = new EventEmitter<any>();
 
-  morphed = false;
+  status: Status = 'pristine';
 
   @Input()
   images: string[] = [];
 
+  get actionLabel(): string {
+    switch (this.status) {
+      case 'pristine':
+        return 'morph';
+      case 'pending':
+        return 'cooking';
+      default:
+      case 'morphed':
+        return 'ok';
+    }
+  }
+
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   startMorph(): void {
-    this.morphed = true;
+    this.status = 'pending';
 
     timer(4000).subscribe(() => {
       this.morph.emit(MOCK);
+      this.status = 'morphed';
     });
   }
 

@@ -7,7 +7,6 @@
 <div class="flex items-center justify-center w-full">
   <div class="grid my-32">
     <h1 class="text-5xl mb-20">morph inspirations</h1>
-    <app-morph-group [index]="0" (morph)="onMorph($event)"></app-morph-group>
-    <app-morph-group [index]="1" *ngIf="anotherMorph" [images]="anotherMorph"></app-morph-group>
+    <app-morph-group [index]="i" (morph)="onMorph($event)" *ngFor="let morph of morphs; let i = index" [images]="morph"></app-morph-group>
   </div>
 </div>

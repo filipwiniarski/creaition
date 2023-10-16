@@ -18,16 +18,31 @@ const fallbackFonts = [
 ];
 
 module.exports = {
-  content: [
-    "./src/**/*.{html,ts}",
-  ],
+  content: ["./src/**/*.{html,ts}"],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Eina', 'sans-serif'],
-        display: ['Strokeweight', 'sans-serif']
-      }
+        sans: ["Eina", "sans-serif"],
+        display: ["Strokeweight", "sans-serif"],
+      },
+      animation: {
+        morph: "morph 300ms cubic-bezier(0.25, 1, 0.5, 1)",
+      },
+      keyframes: {
+        morph: {
+          "0%": {
+            borderRadius: "100%",
+            width: 0,
+            opacity: 0,
+          },
+          "100%": {
+            borderRadius: "0%",
+            width: 180,
+            opacity: 1,
+          },
+        },
+      },
     },
   },
   plugins: [],
-}
+};

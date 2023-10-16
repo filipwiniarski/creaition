@@ -7,13 +7,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  anotherMorph: string[] | undefined;
+  morphs: string[][] = [['/assets/img/i1.png', '/assets/img/i2.png']];
 
   //one = ['/assets/img/o1.png', '/assets/img/o2.png', '/assets/img/o3.png'];
 
   //two = ['/assets/img/o1.png', '/assets/img/o2.png', '/assets/img/o3.png'];
 
   onMorph(morphOutput: string[]): void {
-    this.anotherMorph = morphOutput;
+    this.morphs.push(morphOutput);
   }
 }
