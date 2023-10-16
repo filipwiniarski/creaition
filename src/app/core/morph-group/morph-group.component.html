@@ -1,0 +1,42 @@
+<div>
+  <div>
+    <div>
+      <div class="flex justify-center px-[100px] mb-[-1px]">
+        <svg viewBox="0 0 100% 30" height="2" [attr.width]="m1.clientWidth - 199" stroke-width="1px" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0%" y1="1" x2="100%" y2="1" stroke="black" />
+        </svg>
+      </div>
+    </div>
+    <div class="relative flex gap-4 justify-center mx-auto w-min" #m1>
+      <app-input-image *ngFor="let image of images" [imageSrc]="image"></app-input-image>
+      <div class="absolute flex left-full h-full items-center">
+        <svg viewBox="0 0 40 2" height="2" width="40" stroke-width="1px" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0%" y1="1" x2="100%" y2="1" stroke="black" />
+        </svg>
+        <button class="border border-black duration-300 rounded-full h-10 w-10 hover:bg-gray-100 active:bg-gray-200" (click)="input.click()">+</button>
+        <input type="file" class="hidden" #input (change)="loadImage($event)"/>
+      </div>
+    </div>
+    <div>
+      <div class="flex justify-center px-[100px] mt-[-1px]">
+        <svg viewBox="0 0 100% 30" height="50" [attr.width]="m1.clientWidth - 199" stroke-width="1px" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0%" y1="1" x2="100%" y2="1" stroke="black" />
+          <line x1="50%" y1="0" x2="50%" y2="100%" stroke="black" />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <button class="border border-black duration-300  {{morphed ? 'bg-black rounded-full h-10 w-10 text-white' : 'rounded-md h-10 px-6 hover:bg-gray-100 active:bg-gray-200'}}" (click)="morph()">
+      {{ morphed ? 'k' : 'morph' }}
+    </button>
+  </div>
+  <div>
+    <div class="flex justify-center px-[100px] mt-[-1px]">
+      <svg viewBox="0 0 100% 30" height="50" width="100%" stroke-width="1px" xmlns="http://www.w3.org/2000/svg">
+        <line x1="50%" y1="0" x2="50%" y2="100%" stroke="black" />
+      </svg>
+    </div>
+  </div>
+</div>
+</div>
