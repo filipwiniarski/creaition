@@ -7,7 +7,7 @@
 
   <div class="relative flex justify-center mx-auto w-min">
     <app-input-image
-      *ngFor="let image of images"
+      *ngFor="let image of images; trackBy: trackBy"
       [imageSrc]="image"
       [disabled]="!(isPristine$ | async)"
       (delete)="deleteImage(image)"

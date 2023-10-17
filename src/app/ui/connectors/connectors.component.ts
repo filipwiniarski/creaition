@@ -43,4 +43,8 @@ export class ConnectorsComponent implements OnChanges {
   setItems(): void {
     this.items = emptyArrayOfLength(this.length || 0);
   }
+
+  trackBy(index: number): number {
+    return index;
+  }
 }

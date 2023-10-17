@@ -84,6 +84,10 @@ export class MorphGroupComponent {
     this.changeDetectorRef.detectChanges();
   }
 
+  trackBy(index: number): number {
+    return index;
+  }
+
   private emitMorph(morph: MorphBlock): void {
     this.morph.emit(morph);
     this.markAsMorphed();
