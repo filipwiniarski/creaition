@@ -38,7 +38,6 @@ export class MorphGroupComponent {
     return this.index === 0;
   }
 
-  @aiPure
   get hasMultipleImages(): boolean {
     return this.images.length > 1;
   }
