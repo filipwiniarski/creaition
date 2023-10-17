@@ -12,7 +12,7 @@ export class MorphGroupButtonAddComponent {
   @aiPure
   get buttonClass(): string {
     const base =
-      'duration-300 absolute text-4xl h-[180px] flex justify-center items-center z-10 border border-zinc-300 border-dashed rounded-md hover:bg-zinc-100 active:bg-white';
+      'duration-300 absolute text-4xl h-[180px] flex justify-center items-center z-10 border border-zinc-300 rounded-md hover:bg-zinc-100 active:bg-white';
     return this.hasImages
       ? `${base} w-[80px] left-full translate-x-4`
       : `${base} w-[200px]`;

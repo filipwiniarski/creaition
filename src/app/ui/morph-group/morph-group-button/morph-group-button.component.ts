@@ -11,13 +11,19 @@ import { aiPure } from '@creaitive/decorators/pure';
 export class MorphGroupButtonComponent {
   @aiPure
   get buttonClass$(): Observable<string> {
-    const base = 'border duration-300 rounded-md';
+    const base =
+      'h-10 flex items-center justify-center border duration-300 rounded-md mx-auto';
 
     return this.morphGroupComponent.status$.pipe(
       map((status) => {
-        return status !== 'pristine'
-          ? `${base} bg-black h-10 px-6 text-white border-black`
-          : `${base} h-10 px-6 hover:bg-gray-100 active:bg-gray-200 border-zinc-300`;
+        switch (status) {
+          case 'pristine':
+            return `${base} w-32 hover:bg-gray-100 active:bg-gray-200 border-zinc-300`;
+          case 'morphed':
+            return `${base} bg-black w-10 text-white border-black rounded-full`;
+          case 'pending':
+            return `${base} bg-black w-32 text-white border-black`;
+        }
       }),
     );
   }
