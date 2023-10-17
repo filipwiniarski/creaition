@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MorphGroupComponent } from '../morph-group.component';
-import { aiPure } from '../../../core/decorators/pure';
+import { aiPure } from '@creaitive/decorators/pure';
 import { map, Observable } from 'rxjs';
 
 @Component({

@@ -6,8 +6,8 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { emptyArrayOfLength } from '../../core/helpers/empty-array-of-length';
-import { aiPure } from '../../core/decorators/pure';
+import { emptyArrayOfLength } from '@creaitive/helpers/empty-array-of-length';
+import { aiPure } from '@creaitive/decorators/pure';
 
 type ConnectorsDirection = 'up' | 'down';
 

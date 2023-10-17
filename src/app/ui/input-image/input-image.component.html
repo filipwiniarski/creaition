@@ -9,5 +9,13 @@
       class="duration-100 w-[180px] h-[180px] group-hover:scale-110"
       alt="cre[ai]tion inspiration"
     />
+    <button
+      type="button"
+      *ngIf="!disabled"
+      (click)="emitDelete()"
+      class="absolute p-2 right-0 top-0 hover:opacity-50"
+    >
+      <icon-x-circle></icon-x-circle>
+    </button>
   </div>
 </div>

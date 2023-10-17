@@ -9,6 +9,8 @@
     <app-input-image
       *ngFor="let image of images"
       [imageSrc]="image"
+      [disabled]="!(isPristine$ | async)"
+      (delete)="deleteImage(image)"
     ></app-input-image>
 
     <app-morph-group-button-add></app-morph-group-button-add>

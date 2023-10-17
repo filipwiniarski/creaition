@@ -1,0 +1,7 @@
+<h1 class="text-5xl mb-12 p-8">morph inspirations</h1>
+<app-morph-group
+  *ngFor="let morph of morphs; let i = index; trackBy: trackBy"
+  [index]="i"
+  [images]="morph"
+  (morph)="onMorph($event)"
+></app-morph-group>

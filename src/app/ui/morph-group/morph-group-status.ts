@@ -1,5 +1,5 @@
 import { BehaviorSubject } from 'rxjs';
-import { MorphStatus } from '../../core/types/morph-status';
+import { MorphStatus } from '@creaitive/types/morph-status';
 import { Injectable } from '@angular/core';
 
 @Injectable()

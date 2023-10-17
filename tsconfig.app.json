@@ -3,7 +3,17 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
+    "paths": {
+      "@creaitive/core/*": ["./src/app/core/*"],
+      "@creaitive/decorators/*": ["./src/app/core/decorators/*"],
+      "@creaitive/helpers/*": ["./src/app/core/helpers/*"],
+      "@creaitive/pipes/*": ["./src/app/core/pipes/*"],
+      "@creaitive/types/*": ["./src/app/core/types/*"],
+      "@creaitive/islands/*": ["./src/app/islands/*"],
+      "@creaitive/ui/*": ["./src/app/ui/*"],
+      "@creaitive/icons/*": ["./src/app/icons/*"]
+    }
   },
   "files": ["src/main.ts"],
   "include": ["src/**/*.d.ts"]

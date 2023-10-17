@@ -7,10 +7,10 @@ import {
   Output,
 } from '@angular/core';
 import { map, Observable, timer } from 'rxjs';
-import { MorphBlock } from '../../core/types/morph-block';
+import { MorphBlock } from '@creaitive/types/morph-block';
 import { MorphGroupStatus } from './morph-group-status';
-import { aiPure } from '../../core/decorators/pure';
-import { isNonEmptyFileList } from '../../core/helpers/is-non-empty-file-list';
+import { aiPure } from '@creaitive/decorators/pure';
+import { isNonEmptyFileList } from '@creaitive/helpers/is-non-empty-file-list';
 
 const MOCK = ['/assets/img/o1.png', '/assets/img/o2.png', '/assets/img/o3.png'];
 
@@ -48,6 +48,11 @@ export class MorphGroupComponent {
     return this.status$.pipe(map((status) => status === 'morphed'));
   }
 
+  @aiPure
+  get isPristine$(): Observable<boolean> {
+    return this.status$.pipe(map((status) => status === 'pristine'));
+  }
+
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
     readonly status$: MorphGroupStatus,
@@ -72,6 +77,10 @@ export class MorphGroupComponent {
     Array.from(input.files).forEach((file) => {
       this.readImage(file);
     });
+  }
+
+  deleteImage(imageToDelete: string): void {
+    this.images = this.images.filter((image) => image !== imageToDelete);
   }
 
   private emitMorph(morph: MorphBlock): void {

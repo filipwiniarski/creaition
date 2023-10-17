@@ -3,7 +3,7 @@
   (click)="morphGroupComponent.startMorph()"
   [disabled]="disabled$ | async"
 >
-  <icon-check-badge *ngIf="morphed$ | async; else label" />
+  <icon-check *ngIf="morphed$ | async; else label" />
 </button>
 
 <ng-template #label>

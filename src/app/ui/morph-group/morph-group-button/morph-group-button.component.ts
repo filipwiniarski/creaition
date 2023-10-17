@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MorphGroupComponent } from '../morph-group.component';
 import { map, Observable } from 'rxjs';
-import { aiPure } from '../../../core/decorators/pure';
+import { aiPure } from '@creaitive/decorators/pure';
 
 @Component({
   selector: 'app-morph-group-button',

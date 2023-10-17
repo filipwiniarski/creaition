@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'app-input-image',
@@ -12,7 +18,17 @@ export class InputImageComponent {
   @Input()
   imageSrc: string | undefined;
 
+  @Input()
+  disabled: boolean | null | undefined;
+
+  @Output()
+  delete = new EventEmitter<void>();
+
   alert(): void {
     alert('Could be a modal with inspiration details of some sort');
+  }
+
+  emitDelete(): void {
+    this.delete.emit();
   }
 }
