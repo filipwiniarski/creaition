@@ -1,7 +1,7 @@
 <button
   [class]="buttonClass$ | async"
-  (click)="morphGroupComponent.startMorph()"
   [disabled]="disabled$ | async"
+  (click)="morphGroupComponent.startMorph()"
 >
   <icon-check *ngIf="morphed$ | async; else label" />
 </button>

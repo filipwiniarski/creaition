@@ -18,10 +18,9 @@
 
   <app-connectors [length]="images.length"></app-connectors>
 </div>
-<div class="text-center" *ngIf="hasMultipleImages">
+
+<ng-container *ngIf="hasMultipleImages">
   <app-connector-vertical></app-connector-vertical>
-
   <app-morph-group-button></app-morph-group-button>
-
   <app-connector-vertical *ngIf="isMorphed$ | async"></app-connector-vertical>
-</div>
+</ng-container>
