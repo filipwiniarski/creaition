@@ -24,10 +24,6 @@ export class InputImageComponent {
   @Output()
   delete = new EventEmitter<void>();
 
-  alert(): void {
-    alert('Could be a modal with inspiration details of some sort');
-  }
-
   emitDelete(): void {
     this.delete.emit();
   }
