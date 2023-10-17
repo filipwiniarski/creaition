@@ -11,4 +11,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 export class InputImageComponent {
   @Input()
   imageSrc: string | undefined;
+
+  alert(): void {
+    alert('Could be a modal with inspiration details of some sort');
+  }
 }

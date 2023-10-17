@@ -5,7 +5,7 @@ import { MorphStatus } from '../../types/morph-status';
   name: 'morphActionLabel',
 })
 export class MorphActionLabelPipe implements PipeTransform {
-  transform(value: MorphStatus): string {
+  transform(value: MorphStatus | null): string {
     switch (value) {
       case 'pristine':
         return 'morph';

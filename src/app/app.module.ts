@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { NgOptimizedImage } from '@angular/common';
 import { InputImageModule } from './ui/input-image/input-image.module';
 import { MorphGroupModule } from './ui/morph-group/morph-group.module';
+import { IslandHeaderModule } from './islands/island-header/island-header.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +14,7 @@ import { MorphGroupModule } from './ui/morph-group/morph-group.module';
     NgOptimizedImage,
     InputImageModule,
     MorphGroupModule,
+    IslandHeaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

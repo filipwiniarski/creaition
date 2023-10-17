@@ -1,22 +1,15 @@
-<div
-  class="duration-300 absolute h-[180px] flex items-center {{
-    morphGroupComponent.images.length > 0
-      ? 'w-[80px] left-full translate-x-4'
-      : 'w-[200px]'
-  }}"
-  *ngIf="morphGroupComponent.status === 'pristine'"
+<button
+  *ngIf="isPristine$ | async"
+  [class]="buttonClass"
+  (click)="input.click()"
 >
-  <button
-    class="text-4xl duration-300 w-full h-full flex justify-center items-center z-10 border border-zinc-300 border-dashed rounded-md hover:bg-gray-200 active:bg-gray-300"
-    (click)="input.click()"
-  >
-    +
-  </button>
+  +
+</button>
 
-  <input
-    type="file"
-    class="hidden"
-    #input
-    (change)="morphGroupComponent.loadImage($event)"
-  />
-</div>
+<input
+  type="file"
+  class="hidden"
+  multiple
+  #input
+  (change)="morphGroupComponent.loadImage($event)"
+/>

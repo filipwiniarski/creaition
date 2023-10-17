@@ -9,7 +9,11 @@ import { MorphGroupButtonComponent } from './morph-group-button/morph-group-butt
 import { MorphGroupButtonAddComponent } from './morph-group-button-add/morph-group-button-add.component';
 
 @NgModule({
-  declarations: [MorphGroupComponent, MorphGroupButtonComponent, MorphGroupButtonAddComponent],
+  declarations: [
+    MorphGroupComponent,
+    MorphGroupButtonComponent,
+    MorphGroupButtonAddComponent,
+  ],
   imports: [
     CommonModule,
     InputImageModule,

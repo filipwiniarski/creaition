@@ -6,9 +6,11 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { timer } from 'rxjs';
-import { MorphStatus } from '../../core/types/morph-status';
+import { map, Observable, timer } from 'rxjs';
 import { MorphBlock } from '../../core/types/morph-block';
+import { MorphGroupStatus } from './morph-group-status';
+import { aiPure } from '../../core/decorators/pure';
+import { isNonEmptyFileList } from '../../core/helpers/is-non-empty-file-list';
 
 const MOCK = ['/assets/img/o1.png', '/assets/img/o2.png', '/assets/img/o3.png'];
 
@@ -19,44 +21,80 @@ const MOCK = ['/assets/img/o1.png', '/assets/img/o2.png', '/assets/img/o3.png'];
   host: {
     class: 'block',
   },
+  providers: [MorphGroupStatus],
 })
 export class MorphGroupComponent {
   @Input()
   index: number | undefined;
 
-  @Output()
-  morph = new EventEmitter<any>();
-
-  status: MorphStatus = 'pristine';
-
   @Input()
   images: MorphBlock = [];
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
+  @Output()
+  morph = new EventEmitter<MorphBlock>();
+
+  @aiPure
+  get isFirst(): boolean {
+    return this.index === 0;
+  }
+
+  @aiPure
+  get hasMultipleImages(): boolean {
+    return this.images.length > 1;
+  }
+
+  @aiPure
+  get isMorphed$(): Observable<boolean> {
+    return this.status$.pipe(map((status) => status === 'morphed'));
+  }
+
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef,
+    readonly status$: MorphGroupStatus,
+  ) {}
 
   startMorph(): void {
-    this.status = 'pending';
+    this.markAsPending();
 
-    /** Normally, we would dispatch an action (e.g. NGXS) */
-    timer(4000).subscribe(() => {
-      this.morph.emit([...MOCK]);
-      this.status = 'morphed';
-      this.changeDetectorRef.detectChanges();
-    });
+    /**
+     * Normally, we would set up a store and dispatch an action (e.g. NGXS)
+     */
+    timer(4000).subscribe(() => this.emitMorph([...MOCK]));
   }
 
   loadImage(event: Event): void {
-    const target = <HTMLInputElement>event.target;
-    if (target?.files && target?.files[0]) {
-      const file = target.files[0];
+    const input = <HTMLInputElement>event.target;
 
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        this.images = [...this.images, reader.result as string];
-        this.changeDetectorRef.detectChanges();
-      };
-
-      reader.readAsDataURL(file);
+    if (!isNonEmptyFileList(input)) {
+      return;
     }
+
+    Array.from(input.files).forEach((file) => {
+      this.readImage(file);
+    });
+  }
+
+  private emitMorph(morph: MorphBlock): void {
+    this.morph.emit(morph);
+    this.markAsMorphed();
+  }
+
+  private readImage(file: File): void {
+    const reader = new FileReader();
+    reader.onload = (e) => this.onImageLoad(reader);
+    reader.readAsDataURL(file);
+  }
+
+  private onImageLoad(reader: FileReader): void {
+    this.images = [...this.images, reader.result as string];
+    this.changeDetectorRef.detectChanges();
+  }
+
+  private markAsPending(): void {
+    this.status$.next('pending');
+  }
+
+  private markAsMorphed(): void {
+    this.status$.next('morphed');
   }
 }

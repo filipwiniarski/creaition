@@ -1,14 +1,11 @@
 <button
-  class="border duration-300 rounded-md {{
-    morphGroupComponent.status !== 'pristine'
-      ? 'bg-black h-10 px-6 text-white border-black'
-      : 'h-10 px-6 hover:bg-gray-100 active:bg-gray-200 border-zinc-300'
-  }}"
+  [class]="buttonClass$ | async"
   (click)="morphGroupComponent.startMorph()"
-  [disabled]="morphGroupComponent.status !== 'pristine'"
+  [disabled]="disabled$ | async"
 >
-  <icon-check-badge *ngIf="morphGroupComponent.status === 'morphed'" />
-  <span *ngIf="morphGroupComponent.status !== 'morphed'">{{
-    morphGroupComponent.status | morphActionLabel
-  }}</span>
+  <icon-check-badge *ngIf="morphed$ | async; else label" />
 </button>
+
+<ng-template #label>
+  <span>{{ morphGroupComponent.status$ | async | morphActionLabel }}</span>
+</ng-template>

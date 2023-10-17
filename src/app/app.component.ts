@@ -7,9 +7,11 @@ import { MorphBlock } from './core/types/morph-block';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  morphs: MorphBlock[] = [['/assets/img/i1.png', '/assets/img/i2.png']];
+  morphs: readonly MorphBlock[] = [
+    ['/assets/img/i1.png', '/assets/img/i2.png'],
+  ];
 
-  onMorph(morphOutput: string[]): void {
-    this.morphs.push(morphOutput);
+  onMorph(morphOutput: MorphBlock): void {
+    this.morphs = [...this.morphs, morphOutput];
   }
 }

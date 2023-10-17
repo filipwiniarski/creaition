@@ -1,6 +1,6 @@
-<div class="overflow-x-auto px-8" [class.pt-2]="index === 0">
+<div class="overflow-x-auto px-8" [class.pt-2]="isFirst">
   <app-connectors
-    *ngIf="index"
+    *ngIf="!isFirst"
     [length]="images.length"
     direction="up"
   ></app-connectors>
@@ -16,10 +16,10 @@
 
   <app-connectors [length]="images.length"></app-connectors>
 </div>
-<div class="text-center" *ngIf="images.length > 1">
+<div class="text-center" *ngIf="hasMultipleImages">
   <app-connector-vertical></app-connector-vertical>
 
   <app-morph-group-button></app-morph-group-button>
 
-  <app-connector-vertical *ngIf="status === 'morphed'"></app-connector-vertical>
+  <app-connector-vertical *ngIf="isMorphed$ | async"></app-connector-vertical>
 </div>
