@@ -81,6 +81,7 @@ export class MorphGroupComponent {
 
   deleteImage(imageToDelete: string): void {
     this.images = this.images.filter((image) => image !== imageToDelete);
+    this.changeDetectorRef.detectChanges();
   }
 
   private emitMorph(morph: MorphBlock): void {

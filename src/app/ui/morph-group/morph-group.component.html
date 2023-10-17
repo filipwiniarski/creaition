@@ -13,7 +13,7 @@
       (delete)="deleteImage(image)"
     ></app-input-image>
 
-    <app-morph-group-button-add></app-morph-group-button-add>
+    <app-morph-group-button-add [images]="images"></app-morph-group-button-add>
   </div>
 
   <app-connectors [length]="images.length"></app-connectors>
